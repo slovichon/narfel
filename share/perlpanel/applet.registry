@@ -1,0 +1,47 @@
+# Plugin Registry file for PerlPanel
+# Format is very simple; AppletName:description:category.
+# As you may have noticed, lines with a # at the
+# beginning are comments.
+#
+# When writing the installer for your applet, have
+# it append an entry to this file.
+# $Id$
+
+# DEPRECATED IN 0.8.0: About:A button to show an "About" dialog.:Actions
+ActionMenu:A menu containing useful actions.:Menus
+BatteryMonitor:Shows the status of your laptop's battery.:System
+BBMenu:A Blackbox-compatible program launcher.:Menus
+Clock:Shows the current time on the panel.:Utilities
+Commander:A button to show a command dialog.:Launchers
+Configurator:A comprehensive configuration dialog.:Utilitiies
+CPUTemp:Shows the temperature of your computer's CPU.:System
+DriveManager:An icon to manage a storage device.:System
+GnomeMenu:Your GNOME Menu.:Menus
+# DEPRECATED IN 0.8.0: IconBar:Shows launcher icons on the panel.:Launchers
+Launcher:Shows a single launcher icon on the panel.:Launchers
+LoadMonitor:Shows the current CPU load.:System
+Lock:Locks the screen.:Actions
+NautilusBookmarks:Launch Nautilus bookmarks.:Launchers
+NotificationArea:Shows notification icons on your panel.:Utilities
+OpenBoxMenu:Your OpenBox Menu.:Menus
+Pager:Displays your current workspaces.:Utilities
+PanelPet:A friendly creature to keep you company.:Amusements
+# DEPRECATED IN 0.8.0: Quit:A button to close the panel.:Actions
+RecentFiles:A button that shows files you've recently opened.:Launchers
+# DEPRECATED IN 0.8.0: Reload:A button to reload the panel.:Actions
+RunMe:A simple command line.:Launchers
+ScreenShot:Capture images of your desktop.:Actions
+Separator:A separator.:Utilities
+SetiAtHome:A Seti@Home status monitor.:System
+ShellManager:A simple launcher for SSH sessions.:Launchers
+ShowDesktop:Show or hide all the programs on screen.:Actions
+# DEPRECATED IN 0.8.0: Slot:A socket for applications which support the XEMBED protocol.:Utilities
+Spacer:A spacer.:Utilities
+Tasklist:Lists the programs currently running.:Utilities
+Timer:Set an alarm.:Utilities
+Trash:An icon that can be used to trash files.:Utilities
+Volume:Controls speaker volume.:System
+Webcam:Displays a webcam image.:Amusements
+WiFiMonitor:An applet that shows your current wireless signal strength.:System
+WindowMenu:A menu containing currently opened windows.:Utilities
+XMMS:An applet to control the XMMS media player.:Actions
