@@ -1,0 +1,196 @@
+ChangeLog
+=========
+
+2005-03-14 - v0.9.1
+	* This release properly fixes the panel border by using low-level
+	  drawing functions. New applets include: Timer, Trash, Volume. A
+	  number of other applets have been given a spring clean. You can
+	  drag launchers from the GNOME Menu (although not yet onto the
+	  panel). The .desktop file library has been split into a separate
+	  package called X11::FreeDesktop::DesktopEntry, which is available
+	  from CPAN, and the .desktop editor program has been overhauled to
+	  use it. The BatteryMonitor applet does ACP/APM detection. You can
+	  now upload your SSH key to remote hosts with the ShellManager
+	  applet.
+
+2004-12-10 - v0.9.0
+	* This release adds proper calendaring functions to the Clock applet -
+	  you can add events to your calendar for a particular date, and
+	  get reminders for them. A new command-line tool is available to
+	  install applets, so that third-party applets can be packaged as RPMs
+	  or DEBs. A new DriveManager applet makes it easy to mount, unmount
+	  and eject removable media devices. You now can specify the panel size
+	  in pixels instead of named sizes, and the panel can be set not to
+	  "expand", and instead will be centered on the window edge. Unicode
+	  support has been improved for .desktop files, and translated strings
+	  are used in the GNOME menu when available. You can drag and drop
+	  launcher icons to and from the panel. And there have been a large
+	  number of bug fixes and optimisations.
+
+2004-09-29 - v0.8.0
+
+	* This release introduces some massive changes to PerlPanel. First off
+	  is the eagerly awaited Notification Area applet, which exists only
+	  because of the altruism of Christian Borup. Then there's the new
+	  applet install system, which lets users download and install applets
+	  in a few clicks. A number of applets have been improved on: the
+	  WiFiMonitor applet supports more interface names; the Pager now
+	  has a context menu; the calendar has been restored to the Clock
+	  applet; the CPUTemp applet now works with the CPU temperature monitor
+	  on Dell systems; the WindowMenu applet now tracks the currently
+	  active window. All applets which use .desktop files (GnomeMenu,
+	  IconBar and Launcher) now support launch feedback, and you can
+	  active launch feedback on the Launcher and IconBar applets through
+	  the .desktop editor. A lot of work has been done to improve
+	  responsiveness and startup time.
+
+2004-08-25 - v0.7.0
+
+	* This release includes two new icon themes - Bluecurve and crystalsvg.
+	  The main development work has focused on implementing support for
+	  applets with multiple instances - so you can have to mailbox
+	  monitoring applets, each monitoring a different mailbox. There's a
+	  new "Launcher" applet which uses this.
+
+2004-07-07 - v0.6.0
+
+	* PerlPanel now supports icon themes, so icon themers can create icons
+	  for their themes that PerlPanel will pick up. Auto-completion has
+	  been added to the Commander and RunMe applets. A new Wireless signal
+	  strength applet has been added. The panel itself now has a border that
+	  doesn't break Fitt's Law. The 'Add To Applet' submenu has been broken
+	  down into categories to make it easier to use. The 'Lock Screen' applet
+	  and action item will be greyed out if xscreensaver isn't running. When
+	  an applet fails to load, the error message will be more informative. And
+	  a large number of bugs have been fixed.
+
+2004-05-30 - v0.5.0
+
+	* This release fixes a large number of bugs and introduces changes that
+	  simplify the interface. Several new applets have been introduced: a
+	  "Recent Files" Freedesktop.org standard applet, a CPU temperature
+	  applet that requires the mbmon program, and a very experimental
+	  applet that displays your OpenBox menu. The IconBar applet is more
+	  compliant with Fitt's Law, and the "run program" history is now
+	  shared between the Commander and RunMe applets. Right-clicking on
+	  a spacer now brings up an action menu.
+
+2004-05-28 - v0.4.2
+
+	* This release introduces a handful of new applets: A Gnome menu,
+	  an SSH shell manager, a SETI@Home monitor, and a "mini-commander".
+	  This release requires Gtk+ 2.4.0.
+
+2004-04-06 - v0.4.1
+
+	* This release focuses on the implementation of support for GNU
+	  gettext. Users are encouraged to submit a translation of
+	  PerlPanel's strings into their own languages. To comply with
+	  Fitt's Law, the shadow border around the panel has been
+	  removed, but can be reinstated with a hidden preference.
+	  "Power Off" and "Reboot" options have been added to the
+	  default actions. A "Screenshot" applet, with a corresponding
+	  action menu item, has been added.
+
+2004-02-20 - v0.4.0
+
+	* The Configuration applet has been rewritten using Glade for
+	  improved maintainability. The applet API has been
+	  substantially cleaned up, and new functionality has been
+	  added. The documentation has been expanded to include manual
+	  pages for PerlPanel's supporting programs. The build system has
+	  been overhauled, to comply with Debian's packaging policies.
+	  You can now change the geometry of the Pager applet.
+
+2004-02-02 - v0.3.1
+
+	* This release includes a new "action menu" applet, for which a
+	  base menu class has been implemented. The Commander dialog has
+	  been improved, and can now be called from an external program.
+	  The handling of icons has been made more consistent to make it
+	  easier to implement icon themes in the future. A load of bugs
+	  have been fixed.
+
+2004-01-17 - v0.3.0
+
+	* This release supports EWMH struts, so maximizing windows
+	  doesn't obscure the panel. You can now reorder icons on the
+	  IconBar. The Applet selector has been beautified, with icons
+	  for each applet. The XMMS applet has been almost completely
+	  rewritten, and now includes a volume control. Popup menus now
+	  appear correctly aligned with the applets. The BBMenu applet
+	  has been substantially rewritten, allowing for custom icons.
+	  A new WindowMenu applet gives you access to all the open
+	  windows without using up space.
+
+2004-01-06 - v0.2.0
+
+	* The interaction with the icon editor is much more efficient.
+	  The menu button's click behavior is more user-friendly. The
+	  config file version mismatch test has been disabled. The menu
+	  applet will attempt to locate an icon for application
+	  entries. The Separator applet has been given some spacing on
+	  each side to make it more visible. Two new applets have been
+	  introduced: a "Flexible spacer" applet and a "Slot" applet
+	  which supports the XEMBED extension, allowing non-PerlPanel
+	  programs to attach to the panel. The old PanelPet applet has
+	  been restored. Source and noarch RPMs are now available.
+
+2003-12-23 - v0.1.1
+
+	* This release fixes a lot of bugs with the panel itself and
+	  with many of the applets. It also introduces a configurable
+	  label for the menu button. There is also a new Nautilus
+	  bookmarks applet.
+
+2003-10-12 - v0.1.0
+
+	* This release includes Tasklist, Workspace Pager, and "Show
+	  Desktop" applets using the libwnck Perl bindings. You can now
+	  run multiple panels by specifying an alternate configuration
+	  file.
+
+2003-07-21 - v0.0.5
+
+	* This release is compatible with the recent 0.90 release of
+	  Gtk2-Perl. A couple of new applets have been included. The
+	  configurator includes some options for the menu. The applet
+	  interface and documentation have been revised.
+
+2003-06-27 - v0.0.4
+
+	* This is the first beta quality release. A calendar widget has
+	  been added to the clock dialog. PerlPanel will now take screen
+	  dimensions from the xdpyinfo program when GdkScreen is not
+	  available. The menu applet has a new icon. Drag and drop has
+	  been implemented in the Applet configuration tab.
+
+2003-06-23 - v0.0.3
+
+	* This release includes a huge number of improvements. The Menu
+	  applet has been rewritten and loads much more quickly. A new
+	  CPU load applet has been added. The applet interface has been
+	  cleaned up and extended. Manual pages for the program and a
+	  HOWTO for applet developers have been added. A Gtk-only
+	  .desktop file editor has been created. PerlPanel will take
+	  screen dimensions directly from Gdk where available. Icons are
+	  resized at the GdkPixbuf level, removing the need for the
+	  Image::Size module and a cache on disk. Icons also have a
+	  context menu.
+
+2003-06-10 - v0.0.2
+
+	* This release introduces a large number of improvements,
+	  including a Makefile for installation, a GUI configuration
+	  dialog, a working menu applet that uses your
+	  Blackbox/Fluxbox/OpenBox/Waimea menu, and context menus on
+	  icons. Icons are dynamically rescaled using GdkPixbuf instead
+	  of being cached on disk.
+
+2003-06-02 - v0.0.1
+
+	* Initial release.
+
+--
+$Id$
+

@@ -1,0 +1,325 @@
+=pod
+
+=for comment
+$Id$
+
+=head1 Introduction
+
+PerlPanel draws a small taskbar on your screen to display some useful widgets
+like a programs menu, some shortcut icons, a clock and so on. It's similar to
+the Windows Taskbar, the Gnome Panel, and KDE's Kicker.
+
+However, those programs are designed to be tightly integrated into the
+environment they are part of. For example, Kicker's not much use without KDE.
+
+This kind of flies in the face of the Unix tradition of having lots of
+small, simple programs that don't depend on each other. Such is the
+price of user-friendliness. So users of minimalist window managers miss
+out on the useful bits of panel programs because they won't, or can't,
+run a heavy desktop environment on their systems.
+
+This is where PerlPanel comes in. It is a panel program much in the vein
+of the Gnome Panel and Kicker, but is completely independent of any
+particular environment. So you can use it with Blackbox, for example, or
+WindowMaker.
+
+=head1 Running PerlPanel
+
+Running PerlPanel is as simple as typing C<perlpanel> into your
+terminal. However you might wish to add this to your C<.xinitrc> file or
+any other scripts that start when your X session begins.
+
+To run PerlPanel with a configuration file other than the default, you
+can specify a file as an argument, for example:
+
+	perlpanel ~/.perlpanelrc-2
+
+This allows you to run more than one panel at a time.
+
+=head1 Configuring PerlPanel
+
+All configuration is done in the resource file, located in
+C<$HOME/.perlpanelrc>. This is an XML file and so it should be fairly easy
+to edit as you need. However most parts of it can be changed using the
+Configurator applet.
+
+=head1 Applets
+
+The PerlPanel is really just a container for components called applets.
+If you've used Gnome or KDE you should be familiar with applets -
+they're small widgets that perform a particular task. PerlPanel comes
+with a number of useful applets that are enabled by default. They are
+explained in brief below.
+
+=head2 Installing Third Party applets
+
+A number of people have written applets for PerlPanel which aren't part
+of the main PerlPanel package. These applets can be downloaded and
+installed very easily.
+
+To install an applet, you can simply drag the file onto the panel. Or
+you can use the "Install Applet..." item in the "Add To Panel" submenu
+of the Action Menu, or the "Install Applet" button on the "Add Applet"
+dialog of the Configurator. Each of these will display a dialog that
+will prompt you for the filename of the applet to be installed. Then you
+can add the Applet to your panel.
+
+=head2 The 'ActionMenu' Applet
+
+This applet provides a launcher menu containing the standard "action"
+items. If you don't want to run another menu applet but want access to
+action menus, use this applet.
+
+=head2 The 'BatteryMonitor' Applet
+
+The LoadMonitor applet shows the current charge on your laptop's battery.
+You can click on the widget and bring up a dialog to change the update
+interval. By default, this is 100ms.
+
+=head2 The 'BBMenu' Applet
+
+The BBMenu applet is a program launcher menu, like the Windows Start
+Menu. It can understand any Blackbox-compatible menu file, and will look
+for them on your system. It tries the following locations, in this
+order:
+
+	$HOME/.perlpanel/menu
+	$HOME/.blackbox/menu
+	$HOME/.fluxbox/menu
+	$HOME/.waimea/menu
+	/usr/local/share/blackbox/menu
+	/usr/share/blackbox/menu
+	/usr/local/share/fluxbox/menu
+	/usr/share/fluxbox/menu
+	/usr/local/share/waimea/menu
+	/usr/share/waimea/menu
+
+The BBMenu isn't (yet) clever enough to recognise submenus that contain
+special Blackbox commands, so you might find that there are empty
+submenus and extra separators in the menu. If you copy your menu file
+into C<$HOME/.perlpanel> and remove the Blackbox-specific elements,
+PerlPanel will automatically detect it and use it instead.
+
+BBMenu will attempt to find an icon file for each entry in the menu. It
+does this by searching in common directories for a .png file that
+matches the program name. For example, if your menu has an entry for
+the c<foobar> program, BBMenu will look for a file called I<foobar.png>.
+ If you want to specify an icon to use for a program, you can do so by
+placing a copy of the image (or a symbolic link to it) in
+C<$HOME/.perlpanel/icon-files>.
+
+=head2 The 'Clock' Applet
+
+The Clock applet shows the current time in a text form. Clicking on the
+applet will bring up a dialog with a calender for this month, and a
+page that lets you change the format used to render the time. The
+format used is that of the POSIX C<strftime()> function. Consult the
+L<strftime> manpage for an explanation of the formatting characters.
+
+=head2 The 'Commander' Applet
+
+This applet pops up a dialog box with an entry for a command to run.
+
+=head2 The 'Configurator' Applet
+
+Clicking on the Configurator icon brings up a dialog that you can use to
+change various config settings. When you click the OK button the panel
+will reload.
+
+The Panel tab contains various positioning and padding options for the
+panel itself.
+
+You can add, remove and re-order applets on the panel from the 'Applets'
+tab.
+
+=head2 The 'CPUTemp' Applet
+
+This applet displays the reported temperature of your computer's CPU. You
+need to have a supported motherboard, and the C<mbmon> program installed.
+The temperature can be displayed in Celsius, Fahrenheit or Kelvin.
+
+=head2 The 'DriveManager' Applet
+
+This applet lets you control removable storage media. When you click on
+the applet you will be shown a menu that lets you mount, unmount and
+eject any removable media that is attached to your computer.
+
+=head2 The 'GnomeMenu Applet
+
+This applet gives you access to the standard Gnome applications menu.
+
+By default, this applet reads the menu information from the C<applications:>
+Gnome-VFS URI. However you can change this URI to any that Gnome-VFS
+understands. Edit the C<base> attribute of the applet's configuration.
+
+=head2 The 'Launcher' Applet
+
+A Launcher applet shows a clickable button on the panel. When you click
+the button, the chosen program is run. Right-click to edit the settings
+for the launcher.
+
+=head2 The 'LoadMonitor' Applet
+
+The LoadMonitor applet shows the current CPU load on your system, as a
+percentage. You can click on the widget and bring up a dialog to change
+the update interval. By default, this is 100ms.
+
+=head2 The 'Lock' Applet
+
+This icon locks the screen so that others cannot access your files and
+programs while you are away from the keyboard. You must enter your
+password to unlock the screen. This applet requires that you have the
+XScreenSaver program installed.
+
+=head2 The 'NautilusBookmarks' Applet
+
+This applet provides an easy way to launch your bookmarked locations
+in the Nautilus file browser.
+
+=head2 The 'NotificationArea' Applet
+
+The Notification Area applet displays icons from various applications
+to indicate activity in the application. For example, a mail client
+might place an icon in the applet to denote unread mail.
+
+=head2 The 'OpenBoxMenu' Applet
+
+This OpenBox menu applet shows your OpenBox root menu on the panel.
+B<Note:> the OpenBoxMenu applet is not finished, and you may experience
+problems. Use with caution.
+
+=head2 The 'Pager' Applet
+
+The Pager allows you to switch between virtual desktops, and drag
+programs between desktops.
+
+=head2 The 'PanelPet' Applet
+
+The PanelPet applet shows an animation of a fish in a bowl. You can
+use any file you like. By default, PanelPet uses an animation from
+GNOME's Fish applet. Right-click on the applet to configure it.
+
+=head2 The 'RecentFiles' Applet
+
+Click on this icon brings up a menu containing files you've recently
+opened. When you select the file from the menu, it will be launched in
+the default program for that file type.
+
+=head2 The 'RunMe' Applet
+
+This applet places a small combo box on the panel. When you type a
+command into the entry and press enter, the command will be run.
+
+=head2 The 'Separator' Applet
+
+This applet provides a way of placing some physical space between other
+applets. It adds a vertical separating line with five pixels of space
+on either side.
+
+=head2 The 'SetiAtHome' Applet
+
+This applet displays the total current number of work units completed
+for your Seti@Home account, and the progress on the current one. If you
+click on the applet you will be shown a configuration dialog allowing you
+to enter your account details. You can also check progress on a remote
+host using SSH - you may wish to register your SSH RSA/DSA key on the
+remote host so that you're not prompted for a password every time.
+
+=head2 The 'ShellManager' Applet
+
+This applet gives you a quick and simple way to launch remote shells -
+you can easily add shortcuts to your most frequently visited hosts,
+and open connections to them from the list. Clicking on the applet
+brings up a menu with list of accounts, and entries for adding and
+editing accounts.
+
+By default, the ShellManager will invoke SSH using the C<gnome-terminal>
+program. If you want to change this, edit the C<terminal> attribute of
+the applet's configuration.
+
+=head2 The 'ShowDesktop' Applet
+
+This applet provides a button that minimises/restores all the
+applications that are visible, so you can see your desktop.
+
+=head2 The 'Spacer' Applet
+
+The spacer applet creates a flexible space in the panel, expanding
+out to fill all the unused space.
+
+=head2 The 'Tasklist' Applet
+
+The Tasklist shows you all the programs currently visible on your
+desktop. You can click on the entries for each program to raise them
+to the top of the stack. You can right-click on them to bring up a
+context menu for maximising, minimising, shading and so on.
+
+=head2 The 'Trash' Applet
+
+This applet makes it easy to delete files and folders. Just drag an icon
+onto the applet widget and it will be moved to the Trash folder.
+
+=head2 The 'Volume' Applet
+
+The Volume applet lets you control the volume of your computer's
+speakers. Clicking on the button shows a popup window with a slider - as
+you move the slider, the volume will change.
+
+=head2 The 'Webcam' Applet
+
+This applet loads an image from a website and displays it on your panel.
+If you click on the image you can see it full-size. If you right-click on
+the image you can configure the applet URL and update interval.
+
+=head2 The 'WiFiMonitor' Applet
+
+This applet shows the signal strength of you wireless connection.
+
+=head2 The 'WindowMenu' Applet
+
+This applet is an alternative to the Tasklist applet, which can
+sometimes use up a lot of space on the panel. This applet presents
+a simple icon button. Clicking on this button pops up a menu listing
+all the current windows. Click on a window's entry to raise it.
+
+=head2 The 'XMMS' Applet
+
+This applet lets you control the XMMS media player. You need the
+XMMS-Perl libraries in order to use this applet.
+
+This applet will also control the Beep Media Player.
+
+=head1 Writing Applets
+
+Applets are very easy to write - they're simple Perl scripts. If you
+want to learn how to write applets, consult L<perlpanel-applet-howto>.
+
+=head1 See Also
+
+=over
+
+=item * L<perl(1)>
+
+=item * L<Gtk2>
+
+=item * L<XML::Simple>
+
+=item * L<Xmms::Remote>
+
+=back
+
+=head1 Copyright
+
+Copyright (c) 2004 Gavin Brown.
+
+PerlPanel is free software, you can use it and/or redistribute it under the
+terms of the GNU General Public License. See the COPYING file for more
+information
+
+=head1 Author
+
+Gavin Brown 
+
+Gavin Brown E<lt>gavin.brown@uk.comE<gt>.
+
+=cut

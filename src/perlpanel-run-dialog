@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+# perlpanel-run-command - a command dialog.
+# This file is part of PerlPanel.
+# 
+# PerlPanel is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# PerlPanel is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with PerlPanel; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# Copyright: (C) 2003-2004 Gavin Brown <gavin.brown@uk.com>
+#
+# $Id$
+
+use strict;
+
+use lib (-e '@LIBDIR@' ? '@LIBDIR@' : $ENV{PWD}.'/lib/'); 
+
+$PerlPanel::PREFIX = (-e '@PREFIX@' ? '@PREFIX@' : $ENV{PWD});
+
+$ENV{PATH} = $ENV{PATH}.':'.$ENV{PWD}.'/src' if (!-e '@PREFIX@');
+
+my $PREFIX = (-e '@PREFIX@' ? '@PREFIX@' : $ENV{PWD});
+
+use PerlPanel;
+
+use Gtk2 -init;
+use PerlPanel::Applet::Commander;
+my $commander = PerlPanel::Applet::Commander->new;
+$commander->configure('no-widget');
+$commander->run;
+Gtk2->main;
