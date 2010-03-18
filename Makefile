@@ -1,15 +1,15 @@
 # This file is part of PerlPanel.
-# 
+#
 # PerlPanel is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # PerlPanel is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with PerlPanel; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -59,8 +59,6 @@ perlpanel:
 	@# similarly for other locales as they become available:
 	mkdir -p  build/locale/en/$(LC_CATEGORY)
 	msgfmt -o build/locale/en/$(LC_CATEGORY)/perlpanel.mo src/po/en.po
-	mkdir -p  build/locale/de/$(LC_CATEGORY)
-	msgfmt -o build/locale/de/$(LC_CATEGORY)/perlpanel.mo src/po/de.po
 
 install:
 	mkdir -p	$(DESTDIR)/$(LIBDIR) \
@@ -68,7 +66,6 @@ install:
 			$(DESTDIR)/$(MANDIR)/$(MAN_SECTION) \
 			$(DESTDIR)/$(MANDIR)/$(MAN_LIBS_SECTION) \
 			$(DESTDIR)/$(LOCALEDIR)/en/$(LC_CATEGORY) \
-			$(DESTDIR)/$(LOCALEDIR)/de/$(LC_CATEGORY) \
 			$(DESTDIR)/$(CONFDIR)
 
 	@echo Copying library files to $(DESTDIR)/$(LIBDIR):
@@ -80,7 +77,7 @@ install:
 	find $(DESTDIR)/$(DATADIR) -type f -exec chmod 644 "{}" \;
 
 	install -m 0755 build/perlpanel				$(DESTDIR)/$(BINDIR)/
-	install -m 0755 build/perlpanel-item-edit 		$(DESTDIR)/$(BINDIR)/
+	install -m 0755 build/perlpanel-item-edit		$(DESTDIR)/$(BINDIR)/
 	install -m 0755 build/perlpanel-run-dialog		$(DESTDIR)/$(BINDIR)/
 	install -m 0755 build/perlpanel-applet-install		$(DESTDIR)/$(BINDIR)/
 	install -m 0644 build/PerlPanel.pm			$(DESTDIR)/$(LIBDIR)/
@@ -91,7 +88,6 @@ install:
 	install -m 0755 build/PerlPanel::MenuBase.3.gz		$(DESTDIR)/$(MANDIR)/$(MAN_LIBS_SECTION)/
 	install -m 0755 build/PerlPanel::DesktopEntry.3.gz	$(DESTDIR)/$(MANDIR)/$(MAN_LIBS_SECTION)/
 	install -m 0644 build/locale/en/$(LC_CATEGORY)/perlpanel.mo $(DESTDIR)/$(LOCALEDIR)/en/$(LC_CATEGORY)/
-	install -m 0644 build/locale/de/$(LC_CATEGORY)/perlpanel.mo $(DESTDIR)/$(LOCALEDIR)/de/$(LC_CATEGORY)/
 
 clean:
 	rm -rf build PerlPanel.spec
